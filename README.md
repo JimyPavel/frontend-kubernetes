@@ -3,10 +3,26 @@
 We create a Dockerfile.dev for dev environment only. To use this file in building an image we need to run:
 ### `docker build -f Dockerfile.dev .`
 
-# Running the created image with ID <some_id> on port 3000
+# Running the created image with ID <image_id> on port 3000
 
 We need to run the following command:
-### `docker run -it -p 3000:3000 <some_id>`
+### `docker run -it -p 3000:3000 <image_id>`
+
+# Using docker volumes to have real-time updates
+
+If we want to keep developing and have the changes taken into account in our running container, we need to setup a volume. The container will contain a reference to our local folder.
+
+### docker run -it -p 3000:3000 -v /app/node_modules -v $(pwd):/app <image_id>
+
+"-v $(pwd):/app" = create a volume by mapping the Present Working Directory to "app" folder in the running container (don't forget that we have in Dockerfile.dev the folowing line: "WORKDIR '/app'").
+
+"-v /app/node_modules" = create a volume that will instruct Docker to not map "node_modules" and keep the folder created within the running container.
+
+# Using docker-compose instead of docker commands
+
+Check "docker-compose.yml" file. Run then:
+
+### docker-compose up
 
 # Getting Started with Create React App
 
