@@ -24,6 +24,14 @@ Check "docker-compose.yml" file. Run then:
 
 ### docker-compose up
 
+# Running the tests in interactive mode
+
+Without docker-compose:
+### docker run -it <image_id> npm run test
+
+With docker-compose:
+Check the second "tests" service from "docker-compose.yml" file. It exists just for running tests
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
