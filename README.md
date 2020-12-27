@@ -1,3 +1,13 @@
+# Dockerfile on DEV
+
+We create a Dockerfile.dev for dev environment only. To use this file in building an image we need to run:
+### `docker build -f Dockerfile.dev .`
+
+# Running the created image with ID <some_id> on port 3000
+
+We need to run the following command:
+### `docker run -it -p 3000:3000 <some_id>`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
