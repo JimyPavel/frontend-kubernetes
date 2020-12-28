@@ -32,6 +32,22 @@ Without docker-compose:
 With docker-compose:
 Check the second "tests" service from "docker-compose.yml" file. It exists just for running tests
 
+# Dockerfile in production
+
+This dockerfile will create a different image than the one used for dev environment. This container will start an "nginx" server as last step.
+
+Dockerfile will contain 2 phases:
+* Build phase: using node:alpine, copying the package.json file, install dependencies and running "npm run build"
+* Run phase: using nginx, copying the result of "npm run build" and starting nginx server
+
+# Running the app in production mode
+
+Building the image:
+### docker build .
+
+Running a container with that image (default nginx port is 80):
+### docker run -p 8080:80 <image_id>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
