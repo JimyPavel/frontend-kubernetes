@@ -1,4 +1,4 @@
-# Dockerfile on DEV
+# Dockerfile for DEV (Dockerfile.dev)
 
 We create a Dockerfile.dev for dev environment only. To use this file in building an image we need to run:
 ### `docker build -f Dockerfile.dev .`
@@ -32,7 +32,7 @@ Without docker-compose:
 With docker-compose:
 Check the second "tests" service from "docker-compose.yml" file. It exists just for running tests
 
-# Dockerfile in production
+# Dockerfile for production (Dockerfile)
 
 This dockerfile will create a different image than the one used for dev environment. This container will start an "nginx" server as last step.
 
@@ -47,6 +47,13 @@ Building the image:
 
 Running a container with that image (default nginx port is 80):
 ### docker run -p 8080:80 <image_id>
+
+# Travis CI
+Framework used for Continous Integration, an alternative to Gitlab. Everytime we will push something on Github, Travis will be informed and do some work. For this project Travis will be used for:
+* Running the tests
+* Deploying the app to AWS
+
+### .travis.yml
 
 # Getting Started with Create React App
 
