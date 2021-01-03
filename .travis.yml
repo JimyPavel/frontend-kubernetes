@@ -8,3 +8,19 @@ before_install:
 
 script:
   - docker run -e CI=true jp/frontend-kubernetes npm run test
+  
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "frontend-kubernetes-docker"
+  env: "FrontendKubernetesDocker-env"
+  bucket_name: "elasticbeanstalk-us-east-2-349303497017" # in S3 in aws.amazon.com
+  bucket_path: "frontend-kubernetes-docker" # same as app
+  on:
+    branch: master
+  # in aws.amazon.com we have an user created using IAM
+  # the user name is: docker-kubernetes-travis-ci
+  # the user has the following policy active: AWSElasticBeanstalkFullAccess
+  # next 2 keys can be found in Travis as Environment Variables, their values being taken from aws.amazon.com
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
